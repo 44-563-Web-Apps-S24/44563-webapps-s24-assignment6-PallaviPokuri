@@ -16,9 +16,7 @@
     <button type="button" onclick="checkAnimal()">Check the guess</button>
 </form>
 
-
 <p id="result">This text will be replaced </p>
-
 <script> 
     let wrong=0;
     let correct=0;
@@ -36,6 +34,30 @@
 
     document.getElementById("results").innerHTML = `Correct: ${correct}, Wrong: ${wrong}`;
 }
+</script>
+
+<div  onclick="selectImage()">
+    <img id="Image" src="Orange juice.jpg" alt="Image" width="150" height="150">
+</div>
+
+<script>
+    let useImage = 1;
+    function selectImage() {
+        switch (useImage) {
+            case 1:
+                document.getElementById('Image').src = "Pepsic.jpg";
+                useImage = 1;
+                break;
+            case 2:
+                document.getElementById('Image').src = "Orange juice.jpg";
+                useImage = 2;
+                break;
+            case 3:
+                document.getElementById('Image').src = "Kappa Colada.jpg";
+                useImage = 3;
+                break;
+        }
+    }
 </script>
 
 </body>
