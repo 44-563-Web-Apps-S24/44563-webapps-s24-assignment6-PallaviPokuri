@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Animal Game </title>
 </head>
@@ -31,14 +31,18 @@
                 alert("Grrrr");
             }
             resultElement.innerHTML = `<p>Correct: ${correct}, Wrong: ${wrong}</p>`;
-           
+            guessAnimal.value = ''; 
+            if (wrong > correct) {
+                document.querySelector('button').onclick = function () {
+                    alert("Sorry, too many wrong guesses.");
+                };
         }
+    }
     </script>
     <br><br>
     <div>
         <img id="Image" src="Orange juice.jpg" alt="Image" width="150" height="150">
     </div>
-
     <script>
         let useImage = 1;
         function selectImage() {
@@ -62,5 +66,4 @@
         }
     </script>
     </body>
-
 </html>
