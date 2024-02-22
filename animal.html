@@ -4,15 +4,15 @@
     <title>Animal Game </title>
 </head>
 
-<body>
-    <h1> Animal game by Pallavi</h1>
+<body style="background-color:lightpink">
+    <h1 style="color:blue"> Animal game by Pallavi</h1>
     <form>
         <label for="hiddenAnimal">The hidden animal type</label>
         <input type="password" id="hiddenAnimal" value="Chicken"><br><br>
 
         <label for="guessAnimal">Guess the animal</label>
         <input type="text" id="guessAnimal"><br><br>
-        <button type="button" onclick="checkAnimal()">Check the guess</button>
+        <button type="button" onclick="checkAnimal()"style="background-color: #121212; color: white;">Check the guess</button>
     </form>
 
     <div id="result"></div>
@@ -23,11 +23,13 @@
             const hiddenAnimal = document.getElementById('hiddenAnimal');
             const guessAnimal = document.getElementById('guessAnimal');
             const resultElement = document.getElementById('result');
-            if (hiddenAnimalInput.value === guessAnimalInput.value) {
+            if (hiddenAnimal.value === guessAnimal.value) {
                 correct++;
+                console.log(correct);
                 alert("Ruff ruff");
             } else {
                 wrong++;
+                console.log(wrong);
                 alert("Grrrr");
             }
             resultElement.innerHTML = `<p>Correct: ${correct}, Wrong: ${wrong}</p>`;
