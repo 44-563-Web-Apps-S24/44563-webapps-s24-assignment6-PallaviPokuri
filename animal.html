@@ -1,60 +1,66 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Animal Game</title>
-    </head>
+<html lang="en">
+<head>
+    <title>Animal Game </title>
+</head>
+
 <body>
-    <h1> Animal Game by Pallavi</h1>
-<h2>Getting input</h2>
-<form>
-    <label for="hiddenAnimal">The hidden animal type</label>
-    <input type="password" id="hiddenAnimal" value="Chicken"><br>
+    <h1> Animal game by Pallavi</h1>
+    <form>
+        <label for="hiddenAnimal">The hidden animal type</label>
+        <input type="password" id="hiddenAnimal" value="Chicken"><br><br>
 
-    <label for="guessAnimal">Guess the animal</label>
-    <input type="text" id="guessAnimal"><br>
+        <label for="guessAnimal">Guess the animal</label>
+        <input type="text" id="guessAnimal"><br><br>
+        <button type="button" onclick="checkAnimal()">Check the guess</button>
+    </form>
 
-    <button type="button" onclick="checkAnimal()">Check the guess</button>
-</form>
-
-<p id="result">This text will be replaced </p>
-<script> 
-    let wrong=0;
-    let correct=0;
-    function checkanimal() {
-        const hiddenAnimal = document.getElementById("hiddenAnimal").value;
-        const guessAnimal = document.getElementById("guessAnimal").value;
-
-    if (hiddenAnimal === guessAnimal) {
-      correct++;
-      alert("Ruff ruff");
-    } else {
-      wrong++;
-      alert("Grrrr");
-    }
-    document.getElementById("results").innerHTML = `Correct: ${correct}, Wrong: ${wrong}`;
-}
-</script>
-<div  onclick="selectImage()">
-    <img id="Image" src="Orange juice.jpg" alt="Image" width="150" height="150">
-</div>
-<script>
-    let useImage = 1;
-    function selectImage() {
-        switch (useImage) {
-            case 1:
-                document.getElementById('Image').src = "Pepsic.jpg";
-                useImage = 1;
-                break;
-            case 2:
-                document.getElementById('Image').src = "Orange juice.jpg";
-                useImage = 2;
-                break;
-            case 3:
-                document.getElementById('Image').src = "Kappa Colada.jpg";
-                useImage = 3;
-                break;
+    <div id="result"></div>
+    <script>
+        let wrong = 0;
+        let correct = 0;
+        function checkAnimal() {
+            const hiddenAnimal = document.getElementById('hiddenAnimal');
+            const guessAnimal = document.getElementById('guessAnimal');
+            const resultElement = document.getElementById('result');
+            if (hiddenAnimalInput.value === guessAnimalInput.value) {
+                correct++;
+                alert("Ruff ruff");
+            } else {
+                wrong++;
+                alert("Grrrr");
+            }
+            resultElement.innerHTML = `<p>Correct: ${correct}, Wrong: ${wrong}</p>`;
+           
         }
-    }
-</script>
-</body>
-</html> 
+    </script>
+    <br><br>
+    <div>
+        <img id="Image" src="Orange juice.jpg" alt="Image" width="150" height="150">
+    </div>
+
+    <script>
+        let useImage = 1;
+        function selectImage() {
+            const Image = document.getElementById('Image');
+            switch (useImage) {
+                case 1:
+                    Image.src = "Orange juice.jpg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    Image.src = "Kappa Colada.jpg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    Image.src = "Pepsic.jpg";
+                    useImage = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+    </body>
+
+</html>
