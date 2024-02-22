@@ -1,75 +1,66 @@
 <!DOCTYPE html>
 <html>
- <head>
+<head>
     <title>Discount</title>
- </head>
+</head>
 <body>
-    <h1>Pallavi Discount Calculations</h1>
+    <h1> Pallavi Discount Calculations</h1>
+    <br>
+    <label for="price">Enter price per</label>
+    <input type="number" id="price" value="10"><br><br>
 
-    <label for="price">Enter price per:</label>
-    <input id="price" type="number" value="10"><br>
+    <label for="count">Enter the number of items</label>
+    <input type="number" id="count" value="9"><br><br>
 
-    <label for="count">Enter the number of items:</label>
-    <input id="count" type="number" value="9"><br>
+    <label for="reductions">Enter the discount percent</label>
+    <input type="number" id="reductions" value="5"><br><br>
 
-    <label for="reductions">Enter the discount percent:</label>
-    <input id="reductions" type="number" value="5"><br>
+    <button type="button" onclick="discount()">Show total</button><br><br>
 
-    <button onclick="discount()">Show total</button><br>
-
-    <p id="result value"></p>
+    <div id="result"></div>
+    
     <form>
-        <label for="sum">sum</label>
-        <input id="sum" type="radio"  name="operation" value="sum" onclick="chooseOp()"><br>
-        
-        <label for="mult">mult</label>
-        <input id="multiply" type="radio" name="operation" value="multiply" onclick="chooseOp()"><br>
-        
-        <label for="exp">exp</label>
-        <input id="exponent" type="radio" name="operation" value="exponent" onclick="chooseOp()"><br>
-        
-      </form>
-    <p id="resultoperation"></p>
-   
-<script>  
-    function discount() {
-        const price = document.getElementById("price").value;
-        const count = document.getElementById("count").value;
-        const reductions = document.getElementById("reductions").value;
-        let toShow = "Totals are: ";
+        <label><input type="radio" name="operation" value="sum" onclick="chooseOp()"> sum</label><br><br>
+        <label><input type="radio" name="operation" value="multiply" onclick="chooseOp()"> mul</label><br><br>
+        <label><input type="radio" name="operation" value="exponent" onclick="chooseOp()"> exp</label><br>
+    </form>
 
-        for (let i = 0; i < 5; i++) {
-            const discountPercentage = parseInt(reductionsInput) + i;
-            const calculatedCost = (priceInput * countInput * (100 - discountPercentage) / 100).toFixed(2);
+    <div id="operationResult"></div>
 
-            toShow += `${discountPercentage}% is ${calculatedCost}; `;
+    <script>
+        function discount() {
+            const price = document.getElementById('price').value;
+            const count = document.getElementById('count').value;
+            const reductions = document.getElementById('reductions').value;
+            let toShow = "Totals are: ";
+
+            for (let i = 0; i < 5; i++) {
+                const discountPercentage = parseInt(reductions) + i;
+                const calculatedCost = (price * count * (100 - discountPercentage) / 100).toFixed(2);
+                toShow += `${discountPercentage}% is ${calculatedCost}; `;
+            }
+            document.getElementById('result').innerHTML = toShow;
         }
-        document.getElementById("result").innerHTML = toShow;
-    }
-</script>
-
-<script>
-   function chooseOp() {
-        const price = parseFloat(document.getElementById("price").value);
-        const reductions = parseFloat(document.getElementById("reductions").value);
-        const selectedOperation = document.querySelector('input[name="operation"]:checked').value;
-        let operationResult;  
-        switch (selectedOperation) {
-            case "sum":
-                operationResult = price + reductions;
-                break;
-            case "multiply":
-                operationResult = price * reductions;
-                break;
-            case "exponent":
-                operationResult = Math.pow(price, reductions);
-                break;
-            default:
-                operationResult = "Invalid operation";
+        function chooseOp() {
+            const price = parseFloat(document.getElementById('price').value);
+            const reductions = parseFloat(document.getElementById('reductions').value);
+            const selectedOperation = document.querySelector('input[name="operation"]:checked').value;
+            let operationResult;  
+            switch (selectedOperation) {
+                case 'sum':
+                    operationResult = price + reductions;
+                    break;
+                case 'multiply':
+                    operationResult = price * reductions;
+                    break;
+                case 'exponent':
+                    operationResult = Math.pow(price, reductions);
+                    break;
+                default:
+                    operationResult = 'Invalid operation';
+            }
+            document.getElementById('operationResult').innerHTML = `Result of ${selectedOperation} is ${operationResult}`;
         }
-        document.getElementById("operationResult").innerHTML = `Result of ${selectedOperation} is ${operationResult}`;
-    }
-
-</script>
+    </script>
 </body>
-</html> 
+</html>

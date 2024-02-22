@@ -1,58 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Packing </title>
-    </head>
+<head>
+    <title>packing</title>
+</head>
+
 <body>
+    <h1>Pallavi packs for a trip</h1><br>
 
-<h1>Pallavi packs for a trip</h1>
+    <form>
+        <label><input type="checkbox" id="light" value="True">Pack light</label><br><br>
+        <label><input type="checkbox" id="carry" value="True"> Carry on</label><br><br>
+        <label><input type="checkbox" id="tablet" value="False">Tablet</label><br><br>
+        <button type="button" onclick="selectPack()">Select for packing</button>
+    </form><br><br>
 
-<form>
-    <label for="lightCheckbox"> Pack light </label>
-    <input type="checkbox" id="lightCheckbox" value="True"> <br>
+    <div id="Result"></div>
+    <script>
+        let my_pack = {};
 
-    <label for="carryCheckbox">Carry on </label>
-    <input type="checkbox" id="carryCheckbox" value="True"> <br>
+        function selectPack() {
+            my_pack = {};
+            my_pack.light = document.getElementById("light").checked;
+            my_pack.carry = document.getElementById("carry").checked;
+            my_pack.tablet = document.getElementById("tablet").checked;
 
-    <label for="tabletCheckbox">Tablet</label>
-    <input type="checkbox" id="tabletCheckbox" value="False"><br>
+            document.getElementById("Result").innerHTML = JSON.stringify(my_pack);
+        }
+    </script>
+    <br>
+    <form>
+        <label for="Month">Enter travel month:</label>
+        <input type="text" id="Month" value="May"><br><br>
 
-    <button type="button" onclick="selectPack()">Select for packing</button>
-</form>
+        <label for="Price">Enter price:</label>
+        <input type="text" id="Price" value=" "><br><br>
 
-<p id="result">Results are here  </p>
+        <button type="button" onclick="updatePack()">update the pack</button>
+    </form>
 
-<form>
-    <label for="monthInput">Enter travel month</label>
-    <input type="text" id="monthInput" value="May"><br>
+    <div id="Result"></div>
 
-    <label for="priceInput">Enter price</label>
-    <input type="text" id="priceInput">
+    <script>
+        function updatePack() {
 
-</form>
-    <button type="button" onclick="updatePack()">Update the pack</button>
+            const month = document.getElementById("Month").value;
+            const price = document.getElementById("Price").value;
+            my_pack.Month = month;
+            my_pack.price = price;
 
-    <p>Result after updating the pack</p>
-
-<script> 
- let my_pack = {};
- function selectPack() {
-    my_pack = {};
-    my_pack.light = document.getElementById("lightCheckbox").checked;
-    my_pack.carry = document.getElementById("carryCheckbox").checked;
-    my_pack.tablet = document.getElementById("tabletCheckbox").checked;
-    document.getElementById("results").innerHTML = JSON.stringify(my_pack);
- }
- </script>
-    
-<script>
-    function updatePack() {
-        let month = document.getElementById("Month").value;
-        let price = document.getElementById("price").value;
-        my_pack["Month"] = Month;
-        my_pack["price"] = price;
-        document.getElementById("results").innerHTML = JSON.stringify(my_pack);
-    }
-</script>
+            document.getElementById("Result").innerHTML = JSON.stringify(my_pack);
+        }
+    </script>
+   
 </body>
-</html> 
+</html>
