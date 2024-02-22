@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Packing </title>
+    </head>
+<body>
+
+<h1>Pallavi packs for a trip</h1>
+
+<form>
+    <label for="lightCheckbox"> Pack light </label>
+    <input type="checkbox" id="lightCheckbox" value="True"> <br>
+
+    <label for="carryCheckbox">Carry on </label>
+    <input type="checkbox" id="carryCheckbox" value="True"> <br>
+
+    <label for="tabletCheckbox">Tablet</label>
+    <input type="checkbox" id="tabletCheckbox" value="False"><br>
+
+    <button type="button" onclick="selectPack()">Select for packing</button>
+</form>
+
+<p id="result">Results are here  </p>
+
+<form>
+    <label for="monthInput">Enter travel month</label>
+    <input type="text" id="monthInput" value="May"><br>
+
+    <label for="priceInput">Enter price</label>
+    <input type="text" id="priceInput">
+
+</form>
+    <button type="button" onclick="updatePack()">Update the pack</button>
+
+    <p>Result after updating the pack</p>
+    
+<script> 
+ let my_pack = {};
+ function selectPack() {
+    my_pack = {};
+    my_pack.light = document.getElementById("lightCheckbox").checked;
+    my_pack.carry = document.getElementById("carryCheckbox").checked;
+    my_pack.tablet = document.getElementById("tabletCheckbox").checked;
+    document.getElementById("results").innerHTML = JSON.stringify(my_pack);
+ }
+ </script>
+    
+<script>
+    function updatePack() {
+        let month = document.getElementById("Month").value;
+        let price = document.getElementById("price").value;
+        my_pack["Month"] = Month;
+        my_pack["price"] = price;
+        document.getElementById("results").innerHTML = JSON.stringify(my_pack);
+    }
+</script>
+
+
+</body>
+</html> 
