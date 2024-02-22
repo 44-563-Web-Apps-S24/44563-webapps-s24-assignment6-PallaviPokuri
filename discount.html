@@ -32,24 +32,20 @@
     <p id=""result">Here are the results</p>
    
 <script>  
-    
-function discount()
-{
-    var price = document.getElementById("price").value
-    var cost = document.getElementById("cost").value
-    var discount = document.getElementById("discount").value
-    var total,d;
-    var myOutput = "";
-    for (let i = 0; i< 5; i++) {
-        total= price*number;
-        d=(total*discount)/100;
-        total = total-d;
-        myOutput+=discount+"%"+"is"+total+";";
-        
-        discount++;
+function discount() {
+        const priceInput = document.getElementById('price').value;
+        const countInput = document.getElementById('count').value;
+        const reductionsInput = document.getElementById('reductions').value;
+        let toShow = "Totals are: ";
+
+        for (let i = 0; i < 5; i++) {
+            const discountPercentage = parseInt(reductionsInput) + i;
+            const calculatedCost = (priceInput * countInput * (100 - discountPercentage) / 100).toFixed(2);
+
+            toShow += `${discountPercentage}% is ${calculatedCost}; `;
+        }
+         document.getElementById('result').innerHTML = toShow;
     }
-    document.getElementById("Result").innerHTML = "Total are: "+myOutput;   
-}
 </script>
 
 <script>
