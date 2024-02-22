@@ -49,39 +49,26 @@ function discount() {
 </script>
 
 <script>
-   function chooseOp()
-{
-    
-            var price = parseFloat(document.getElementById("price").value);
-            var discount = parseFloat(document.getElementById("discount").value);
-            var operation = document.querySelector('input[name="operation"]:checked').value;
-            var result;
-            var operationSymbol;
- 
-            switch (operation) {
-                case "sum":
-                    result = price + discount;
-                    operationSymbol = "+";
+   function chooseOp() {
+            const priceInput = parseFloat(document.getElementById('price').value);
+            const reductionsInput = parseFloat(document.getElementById('reductions').value);
+            const selectedOperation = document.querySelector('input[name="operation"]:checked').value;
+            let operationResult;  
+            switch (selectedOperation) {
+                case 'sum':
+                    operationResult = priceInput + reductionsInput;
                     break;
-                case "mult":
-                    result = price * discount;
-                    operationSymbol = "*";
+                case 'multiply':
+                    operationResult = priceInput * reductionsInput;
                     break;
-                case "exp":
-                    result = price ** discount;
-                    operationSymbol = "";
+                case 'exponent':
+                    operationResult = Math.pow(priceInput, reductionsInput);
                     break;
                 default:
-                    result = "Invalid operation";
-                    operationSymbol = " ";
-                    break;
+                    operationResult = 'Invalid operation';
             }
- 
-            var outputMessage = ` ${operation} of ${price} and ${discount} is  ${result}`;
-            document.getElementById("result").textContent = "Result: " + result;
-            document.getElementById("result").textContent = outputMessage;
+            document.getElementById('operationResult').innerHTML = `Result of ${selectedOperation} is ${operationResult}`;
         }
-    
 
 </script>
 </body>
