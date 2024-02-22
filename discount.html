@@ -17,56 +17,76 @@
 
     <button onclick="discount()">Show total</button><br>
 
-    <p >Result</p>
+    <p id="Output">Result</p>
     <form>
         <label for="sum">sum</label>
         <input id="sum" type="radio"  name="operation" value="sum" onclick="chooseOp()"><br>
         
-        <label for="multiply">mult</label>
+        <label for="mult">mult</label>
         <input id="multiply" type="radio" name="operation" value="multiply" onclick="chooseOp()"><br>
         
-        <label for="exponent">exp</label>
+        <label for="exp">exp</label>
         <input id="exponent" type="radio" name="operation" value="exponent" onclick="chooseOp()"><br>
         
       </form>
-    <p>Here are the results</p>
-    <script>
-        function chooseOp(){
-            const price = document.getElementById("price").value;
-            var reductions = parseFloat(document.getElementById("discount").value);
+    <p id=""result">Here are the results</p>
+   
+<script>  
+    
+function discount()
+{
+    var price = document.getElementById("price").value
+    var cost = document.getElementById("cost").value
+    var discount = document.getElementById("discount").value
+    var total,d;
+    var myOutput = "";
+    for (let i = 0; i< 5; i++) {
+        total= price*number;
+        d=(total*discount)/100;
+        total = total-d;
+        myOutput+=discount+"%"+"is"+total+";";
+        
+        discount++;
+    }
+    document.getElementById("Result").innerHTML = "Total are: "+myOutput;   
+}
+</script>
+
+<script>
+   function chooseOp()
+{
+    
+            var price = parseFloat(document.getElementById("price").value);
+            var discount = parseFloat(document.getElementById("discount").value);
             var operation = document.querySelector('input[name="operation"]:checked').value;
             var result;
+            var operationSymbol;
+ 
             switch (operation) {
                 case "sum":
                     result = price + discount;
-                    document.getElementById("operationresult").innerHTML = "Sum of " + price + " and " + discount + " is " + result;
+                    operationSymbol = "+";
                     break;
-                case "multiply":
+                case "mult":
                     result = price * discount;
-                    document.getElementById("operationresult").innerHTML = "Product of " + price + " and " + discount + " is " + result;
+                    operationSymbol = "*";
                     break;
-                case "exponent":
-                    result = Math.pow(price,discount);
-                    document.getElementById("operationresult").innerHTML = "Exponent of " + price + " and " + discount + " is " + result;
+                case "exp":
+                    result = price ** discount;
+                    operationSymbol = "";
+                    break;
+                default:
+                    result = "Invalid operation";
+                    operationSymbol = " ";
                     break;
             }
+ 
+            var outputMessage = ` ${operation} of ${price} and ${discount} is  ${result}`;
+            document.getElementById("result").textContent = "Result: " + result;
+            document.getElementById("result").textContent = outputMessage;
         }
-    </script>
-<script>  
-    function discount(){
-        const price = document.getElementById("price").value;
-        const count = document.getElementById("count").value;
-        let reductions = document.getElementById("discount").value;
-        let myOutput = " ";
+    
 
-        for(let i=0; i<5; i++){
-            percentage = reductions + i;
-            Cost = (price * count * (1 - percentage/ 100)); 
-            myOutput += `${percentage}% is ${total.toFixed(1)}; `; 
-        }
-            document.getElementById("Result").innerHTML = "Totals are: "+ myOutput;  
-    }
 </script>
-
 </body>
 </html> 
